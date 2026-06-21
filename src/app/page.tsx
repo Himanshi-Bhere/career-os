@@ -11,7 +11,7 @@ const features = [
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      <nav className="mx-auto flex h-20 max-w-[1180px] items-center justify-between px-5">
+      <nav className="mx-auto flex h-20 max-w-295 items-center justify-between px-5">
         <Link href="/" className="flex items-center gap-2 text-xl font-extrabold">
           <span className="text-3xl text-violet-400">✦</span>CareerOS
         </Link>
@@ -26,15 +26,15 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="relative mx-auto max-w-[1180px] px-5 pb-24 pt-20 text-center">
-        <div className="absolute left-1/2 top-20 -z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-violet-600/20 blur-[110px]" />
+      <section className="relative mx-auto max-w-295 px-5 pb-24 pt-20 text-center">
+        <div className="absolute left-1/2 top-20 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-violet-600/20 blur-[110px]" />
         <div className="relative z-10">
           <span className="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-xs font-bold text-violet-300">
             THE CAREER WORKSPACE FOR AMBITIOUS STUDENTS
           </span>
           <h1 className="mx-auto mt-7 max-w-4xl text-5xl font-black leading-[1.05] tracking-[-0.045em] sm:text-7xl">
             Turn career chaos into<br />
-            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-sky-400 bg-clip-text text-transparent">a clear next move.</span>
+            <span className="bg-linear-to-r from-violet-400 via-fuchsia-400 to-sky-400 bg-clip-text text-transparent">a clear next move.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
             Discover the right roles, track every application, prepare for interviews, and understand your progress without juggling six different tools.
@@ -62,14 +62,14 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
-              <div className="rounded-xl border border-slate-800 bg-white/[.02] p-4">
+              <div className="rounded-xl border border-slate-800 bg-white/2 p-4">
                 <p className="text-xs text-slate-500">TODAY&apos;S FOCUS</p>
                 <p className="mt-3 text-sm font-bold">Prepare for TCS interview</p>
                 <div className="mt-4 h-1.5 rounded-full bg-slate-800">
                   <div className="h-full w-[70%] rounded-full bg-violet-500" />
                 </div>
               </div>
-              <div className="rounded-xl border border-slate-800 bg-white/[.02] p-4">
+              <div className="rounded-xl border border-slate-800 bg-white/2 p-4">
                 <p className="text-xs text-slate-500">BEST MATCH</p>
                 <div className="mt-3 flex items-center gap-3">
                   <div className="relative h-10 w-10 rounded-lg bg-white">
@@ -81,7 +81,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="rounded-xl border border-slate-800 bg-white/[.02] p-4">
+              <div className="rounded-xl border border-slate-800 bg-white/2 p-4">
                 <p className="text-xs text-slate-500">PIPELINE</p>
                 <div className="mt-4 flex items-center gap-2">
                   {["bg-sky-500", "bg-violet-500", "bg-amber-500", "bg-emerald-500"].map((color, index) => (
@@ -98,7 +98,7 @@ export default function Home() {
       </section>
 
       <section id="product" className="border-y border-slate-800 bg-[#090c12] py-24">
-        <div className="mx-auto max-w-[1180px] px-5">
+        <div className="mx-auto max-w-295 px-5">
           <div className="max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[.2em] text-violet-400">One system, distinct tools</p>
             <h2 className="mt-4 text-4xl font-extrabold tracking-tight">Every page has one clear job.</h2>
@@ -108,7 +108,7 @@ export default function Home() {
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {features.map(([title, body], index) => (
-              <div key={title} className="rounded-2xl border border-slate-800 bg-gradient-to-br from-[#121720] to-[#0a0d13] p-6">
+              <div key={title} className="rounded-2xl border border-slate-800 bg-linear-to-br from-[#121720] to-[#0a0d13] p-6">
                 <span className="grid h-11 w-11 place-items-center rounded-xl bg-violet-500/10 text-sm font-black text-violet-300">0{index + 1}</span>
                 <h3 className="mt-5 text-lg font-bold">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">{body}</p>
@@ -118,7 +118,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how" className="mx-auto max-w-[1180px] px-5 py-24">
+      <section id="how" className="mx-auto max-w-295 px-5 py-24">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.2em] text-violet-400">From uncertainty to momentum</p>
@@ -147,7 +147,7 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-slate-800">
-        <div className="mx-auto flex max-w-[1180px] flex-col justify-between gap-4 px-5 py-8 text-xs text-slate-500 sm:flex-row">
+        <div className="mx-auto flex max-w-295 flex-col justify-between gap-4 px-5 py-8 text-xs text-slate-500 sm:flex-row">
           <p>✦ CareerOS · Built for the next opportunity.</p>
           <div className="flex gap-5">
             <a href="#">Privacy</a>
