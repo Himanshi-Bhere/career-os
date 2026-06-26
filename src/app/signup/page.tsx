@@ -2,19 +2,86 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 const goals = ["Internship", "Placement", "Skill growth"];
 const roles = ["Cloud", "Frontend", "AI/ML", "Networking"];
 
 export default function SignupPage() {
+  const router = useRouter();
+  const supabase = createClient();
+  const [loading, setLoading] = useState(false);
   const [goal, setGoal] = useState(goals[0]);
   const [role, setRole] = useState(roles[0]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const ready = name.trim().length >= 2 && email.includes("@") && password.length >= 6;
+  const ready = 
+    name.trim().length >= 2 && 
+    email.includes("@") && 
+    password.length >= 6;
+  
+  async function handleSignup(event: React.FormEvent) {
 
+    event.preventDefault();
+
+    if (!ready) return;
+
+    try {
+
+      setLoading(true);
+
+      const { error } = await supabase.auth.signUp({
+
+        email,
+
+        password,
+
+        options: {
+
+          data: {
+
+            full_name: name,
+
+            goal,
+
+            preferred_role: role,
+
+          },
+
+        },
+
+      });
+
+      if (error) {
+
+        alert(error.message);
+
+        return;
+
+      }
+
+      alert(
+        "Account created successfully. Please verify your email."
+      );
+
+      router.push("/login");
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert("Something went wrong.");
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
+  }
   return (
     <main className="grid min-h-screen lg:grid-cols-[.95fr_1.05fr]">
       <section className="flex items-center justify-center px-5 py-12">
@@ -31,7 +98,7 @@ export default function SignupPage() {
             </p>
           </div>
 
-          <form className="space-y-4" onSubmit={(event) => event.preventDefault()}>
+          <form className="space-y-4" onSubmit={handleSignup}>
             <label className="block text-xs font-semibold text-slate-400">
               Full name
               <input value={name} onChange={(event) => setName(event.target.value)} type="text" autoComplete="name" placeholder="Himanshi" className="mt-2 w-full rounded-xl border border-slate-700 bg-[#090c12] px-4 py-3.5 text-sm outline-none focus:border-violet-500" />
@@ -67,10 +134,23 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <Link href={ready ? "/login" : "#"} className={`block rounded-xl px-5 py-3.5 text-center text-sm font-bold shadow-[0_12px_35px_rgba(124,58,237,.25)] ${ready ? "bg-violet-600 text-white hover:bg-violet-500" : "bg-slate-800 text-slate-500"}`}>
-              Create account & continue to login
-            </Link>
-            <p className="text-center text-xs text-slate-500">
+            <button
+            type="submit"
+            disabled={!ready || loading}
+            className={`block w-full rounded-xl px-5 py-3.5 text-center text-sm font-bold shadow-[0_12px_35px_rgba(124,58,237,.25)]
+              ${
+                ready
+                 ? "bg-violet-600 text-white hover:bg-violet-500"
+                  : "bg-slate-800 text-slate-500"
+                  }`}
+>
+
+  {loading
+    ? "Creating account..."
+    : "Create account & continue to login"}
+
+</button>
+<p className="text-center text-xs text-slate-500">
               Backend later: this button will create the account, save preferences, then redirect to login or email verification.
             </p>
           </form>
@@ -93,7 +173,7 @@ export default function SignupPage() {
           <div className="mt-10 rounded-3xl border border-slate-700 bg-[#0c1118] p-5 shadow-2xl">
             <div className="flex items-center gap-4">
               <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-violet-500">
-                <Image src="/avatar/mentor.png" alt="Career mentor" fill className="object-cover" />
+                <Image src="/avatar/mentor.png" alt="Career mentor" fill sizes="64px" className="object-cover"/>
               </div>
               <div>
                 <p className="font-bold">{name.trim() || "Your"} first setup</p>
@@ -102,7 +182,7 @@ export default function SignupPage() {
             </div>
             <div className="mt-5 space-y-3 text-sm">
               {["Save onboarding preferences", "Create secure account", "Ask user to log in"].map((item, index) => (
-                <div key={item} className="flex items-center justify-between rounded-xl border border-slate-800 bg-white/[.03] px-4 py-3">
+                <div key={item} className="flex items-center justify-between rounded-xl border border-slate-800 bg-white/3 px-4 py-3">
                   <span>{item}</span>
                   <span className="text-xs font-bold text-violet-300">0{index + 1}</span>
                 </div>

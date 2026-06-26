@@ -58,7 +58,7 @@ export default function Home() {
                 <h2 className="mt-2 text-xl font-bold">Your career, organized around today.</h2>
               </div>
               <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-violet-500">
-                <Image src="/avatar/mentor.png" alt="Career mentor" fill className="object-cover" />
+                <Image src="/avatar/mentor.png" alt="Career mentor" fill sizes="48px" className="object-cover" />
               </div>
             </div>
             <div className="mt-5 grid gap-3 md:grid-cols-3">

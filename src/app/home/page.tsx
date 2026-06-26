@@ -47,12 +47,12 @@ export default function HomePage() {
         <Panel className="p-5">
           <SectionTitle icon="◎" title="Today&apos;s focus" action={<Pill tone="green">2 actions</Pill>} />
           <div className="mt-5 space-y-3">
-            <div className="rounded-2xl border border-slate-800 bg-white/[.02] p-4">
+            <div className="rounded-2xl border border-slate-800 bg-white/2 p-4">
               <p className="text-xs font-bold uppercase tracking-[.18em] text-slate-500">Action 01</p>
               <h3 className="mt-2 font-bold">Apply to Microsoft Cloud Intern</h3>
               <p className="mt-1 text-sm text-slate-400">Remote role, ₹25,000/month, strong match with your cloud + networking profile.</p>
             </div>
-            <div className="rounded-2xl border border-slate-800 bg-white/[.02] p-4">
+            <div className="rounded-2xl border border-slate-800 bg-white/2 p-4">
               <p className="text-xs font-bold uppercase tracking-[.18em] text-slate-500">Action 02</p>
               <h3 className="mt-2 font-bold">Revise TCS interview basics</h3>
               <p className="mt-1 text-sm text-slate-400">Focus on networking fundamentals and two HR answers.</p>

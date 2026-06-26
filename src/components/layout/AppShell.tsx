@@ -37,7 +37,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-[#070a0f] text-[#f5f5f7] transition-colors">
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((value) => !value)} />
 
-      <header className={`border-panel sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-[#080b10]/95 px-4 backdrop-blur transition-all duration-300 lg:fixed lg:right-0 ${collapsed ? "lg:left-[76px]" : "lg:left-[216px]"}`}>
+      <header className={`border-panel sticky top-0 z-20 flex h-16 items-center justify-between border-b bg-[#080b10]/95 px-4 backdrop-blur transition-all duration-300 lg:fixed lg:right-0 ${collapsed ? "lg:left-19" : "lg:left-54"}`}>
         <div className="flex items-center gap-3">
           <details className="relative lg:hidden">
             <summary className="list-none rounded-lg border border-slate-700 px-3 py-2 text-xs">Menu</summary>
@@ -71,7 +71,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           <details className="relative">
             <summary className="list-none">
               <div className="relative h-10 w-10 overflow-hidden rounded-full border border-violet-500 bg-violet-500/20">
-                <Image src="/avatar/mentor.png" alt="Himanshi profile" fill className="object-cover" />
+                <Image
+                 src="/avatar/mentor.png" alt="Himanshi profile" fill sizes="40px" className="object-cover" />
               </div>
             </summary>
             <div className="absolute right-0 mt-2 w-56 rounded-xl border border-slate-700 bg-[#0d1117] p-2 text-sm shadow-2xl">
@@ -89,7 +90,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      <main className={`min-h-screen px-3 pb-6 pt-4 transition-all duration-300 md:px-5 lg:pt-20 ${collapsed ? "lg:ml-[76px]" : "lg:ml-[216px]"}`}>
+      <main className={`min-h-screen px-3 pb-6 pt-4 transition-all duration-300 md:px-5 lg:pt-20 ${collapsed ? "lg:ml-19" : "lg:ml-54"}`}>
         {children}
       </main>
     </div>
